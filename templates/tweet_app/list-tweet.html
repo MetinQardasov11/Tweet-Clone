@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="text-center mt-4 mb-4">List Tweet Page</h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <ul>
+          <div id="tweet-list">
+            {% for tweet in tweets %}
+              <div class="card shadow-sm border-1 mb-4">
+                <div class="card-header bg-primary text-white fw-bold">
+                  <i class="bi bi-person-circle me-2"></i> {{ tweet.username }}
+                </div>
+                <div class="card-body bg-light">
+                  <p class="card-text">{{ tweet.message }}</p>
+                </div>
+              </div>
+            {% empty %}
+              <div class="alert alert-warning text-center" role="alert">
+                <i class="bi bi-exclamation-circle me-2"></i> No tweets available.
+              </div>
+            {% endfor %}
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

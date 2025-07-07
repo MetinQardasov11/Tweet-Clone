@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h1 class="text-center mt-4">Add Tweet By Model Form</h1>
+
+  <div class="container tweet-form">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form method="POST">
+          {% csrf_token %}
+          {% for i in form %}
+            {{ i.label_tag }} 
+            {{ i }}
+            <br>
+          {% endfor %}
+          <button type="submit" class="btn btn-success">Send Tweet</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

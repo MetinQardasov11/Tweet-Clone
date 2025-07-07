@@ -4,12 +4,6 @@ from .models import Tweet
 
 
 class AddTweetForm(forms.Form):
-    username = forms.CharField(
-        max_length=100,
-        required=True,
-        label='Username',
-        widget=forms.TextInput(attrs={'class': 'form-control'})
-    )
     message = forms.CharField(
         required=True,
         label='Message',
@@ -21,8 +15,7 @@ class AddTweetForm(forms.Form):
 class AddTweetModelForm(ModelForm):
     class Meta:
         model = Tweet
-        fields = ['username', 'message']
+        fields = ['message']
         widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control'}),
             'message': forms.Textarea(attrs={'class': 'form-control'})
         }

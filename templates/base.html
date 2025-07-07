@@ -29,6 +29,21 @@
             <li class="nav-item">
               <a class="nav-link text-white" href="{% url 'tweet_app:add_tweet_by_model_form' %}">Add tweet by model form</a>
             </li>
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <form class="nav-link" method="post" action="{% url 'logout' %}">
+                  {% csrf_token %}
+                  <button type="submit" class="nav-link btn btn-link text-white p-0" style="text-decoration: none;">Logout</button>
+                </form>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'tweet_app:register' %}">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'login' %}">Login</a>
+              </li>
+            {% endif %}
           </ul>
           <form class="d-flex justify-content-end" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
